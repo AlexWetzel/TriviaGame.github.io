@@ -4,23 +4,31 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://bootswatch.com/darkly/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
-	<header>Trivia Game</header>
-	<div class="wrap">
-		<div id="timer">Time left: 31s</div>
-		<div id="question">Is it working?</div>
-		<div>
-			<div class="answer" id="answerOne">no, this is not working</div>
-			<div class="answer" id="answerTwo"></div>
-			<div class="answer" id="answerThree"></div>
-			<div class="answer" id="answerFour"></div>
+	<header class="text-center">
+		<img src="assets/images/dark-souls-title.jpg">
+		<h1>Trivia Game</h1>
+	</header>
+	<div class="container">
+		<div class="jumbotron text-center">
+			<div id="timer" class="text-center">Time Remaining: ---</div>
+			<div id="question" class="text-center">Test your knowledge of the 2011 video game.</div>
+			<div id="answers" class="text-center">
+				<div class="answer btn btn-warning" id="answerOne">no, this is not working</div>
+				<div class="answer btn btn-warning" id="answerTwo"></div>
+				<div class="answer btn btn-warning" id="answerThree"></div>
+				<div class="answer btn btn-warning" id="answerFour"></div>
+			</div>
+			<div id="start" class="btn btn-warning">Start Quiz</div>
 		</div>
-		<div id="start"><p>Start Quiz</p></div>
 	</div>
+
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="assets/javascript/app.js"></script>
-	//2 4 2 3 1 2 3 2
+
 </body>
 </html>

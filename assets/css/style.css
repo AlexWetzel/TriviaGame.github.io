@@ -1,5 +1,31 @@
+body {
+	background-color: #101010;
+}
+
+.jumbotron{
+	overflow: auto;
+}
+
 .answer {
-	height: 30px;
-	width: 300px;
-	background-color: red;
+	margin: 5px;
+	font-size: 30px;
+	height: auto;
+	width: 100%;
+	float: left;
+	clear: both;
+}
+
+#timer {
+	font-size: 24px;
+	margin: 10px 0px;
+}
+
+#question {
+	font-size: 30px;
+	margin: 10px 20px;
+}
+
+#answers {
+	margin: 0 auto;
+	width: auto;
 }

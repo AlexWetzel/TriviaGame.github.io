@@ -15,26 +15,26 @@ var trivia = {
 	//A question string, four answer strings
 	question: {
 		one: {
-			string: "In the Age of Ancients, four beings found the Souls of Lords within the great flame: Nito, first of the dead; The witch of Izalith; Gwyn, Lord of Sunlight; and...",
+			string: "What place lies below the world?",
 			answer: {
 				one: {
-					string: "The furtive pygmy",
+					string: "Ash Lake",
 					value: true
 				},
 				two: {
-					string: "Seath the Scaleless",
+					string: "Oolacile",
 					value: false
 				},
 				three: {
-					string: "",
+					string: "Lost Izalith",
 					value: false
 				},
 				four: {
-					string: "Nor this",
+					string: "Blighttown",
 					value: false
 				}
 			},
-			gif: "https://media.giphy.com/media/13CoXDiaCcCoyk/giphy.gif"
+			gif: "assets/images/ash_lake.gif"
 		},
 		two: {
 			string: "What is an undead's favorite drink?",
@@ -56,29 +56,29 @@ var trivia = {
 					value: false
 				}
 			},
-			gif: "https://media.giphy.com/media/13CoXDiaCcCoyk/giphy.gif"
+			gif: "assets/images/estus.gif"
 		},
 		three: {
-			string: "What message displays when you die?",
+			string: "A jolly, sun-worshipping knight who you can summon for aid on your journey",
 			answer: {
 				one: {
-					string: "Your Journey Ends",
+					string: "Lautrec the Embraced",
 					value: false
 				},
 				two: {
-					string: "You Died",
+					string: "Solaire of Astora",
 					value: true
 				},
 				three: {
-					string: "Game Over",
+					string: "Reah of thorolund",
 					value: false
 				},
 				four: {
-					string: "Thanks Obama",
+					string: "Laurentius of the great Swamp",
 					value: false
 				}
 			},
-			gif: "https://media.giphy.com/media/13CoXDiaCcCoyk/giphy.gif"
+			gif: "assets/images/solaire.gif"
 		},
 		four: {
 			string: "A sacred place in Lordran where chosen undead begin their journey",
@@ -100,7 +100,7 @@ var trivia = {
 					value: false
 				}
 			},
-			gif: "https://media.giphy.com/media/13CoXDiaCcCoyk/giphy.gif"
+			gif: "assets/images/firelink.gif"
 		},
 		five: {
 			string: "What is the most effective strategy for defeating the Capra Demon?",
@@ -122,7 +122,7 @@ var trivia = {
 					value: true
 				}
 			},
-			gif: "https://media.giphy.com/media/13CoXDiaCcCoyk/giphy.gif"
+			gif: "assets/images/capra.gif"
 		},
 		six: {
 			string: "Siegmeyer of Catarina dons armor bearing resemblance to what vegetable?",
@@ -144,7 +144,7 @@ var trivia = {
 					value: false
 				}
 			},
-			gif: "https://media.giphy.com/media/13CoXDiaCcCoyk/giphy.gif"
+			gif: "assets/images/siegmeyer.gif"
 		},
 		seven: {
 			string: "The 'Giantdad' build uses what weapon",
@@ -166,7 +166,7 @@ var trivia = {
 					value: false
 				}
 			},
-			gif: "https://media.giphy.com/media/13CoXDiaCcCoyk/giphy.gif"
+			gif: "assets/images/giantdad.gif"
 		},
 		eight: {
 			string: "The Iron Golem of Sen's Fortress can be defeated single-handedly by this summoned character",
@@ -188,7 +188,7 @@ var trivia = {
 					value: false
 				}
 			},
-			gif: "https://media.giphy.com/media/13CoXDiaCcCoyk/giphy.gif"
+			gif: "assets/images/tarkus.gif"
 		},
 		nine: {
 			string: "Guardians of Anor Londo, this infamous duo is the ultimate difficulty spike in Dark Souls",
@@ -210,36 +210,36 @@ var trivia = {
 					value: false
 				}
 			},
-			gif: "https://media.giphy.com/media/13CoXDiaCcCoyk/giphy.gif"
+			gif: "assets/images/ornstein-smough.gif"
 		},
 		ten: {
-			string: "The Moonlight Sword is a recurring weapon in From Software's games. How do you obtain it in Dark Souls?",
+			string: "Who was the first to offer themselves as kindling to the first flame, to prolong the age of fire?",
 			answer: {
 				one: {
-					string: "Infuse the soul of Gwyndolin into a +10 greatsword",
+					string: "The Witch of Izalith",
 					value: false
 				},
 				two: {
-					string: "Sever Seath's tail",
+					string: "Gwyn, Lord of Sunlight",
 					value: true
 				},
 				three: {
-					string: "Complete Big Hat Logan's questline",
+					string: "Gravelord Nito",
 					value: false
 				},
 				four: {
-					string: "Find it inside a mimic chest in the Duke's Archives",
+					string: "Trusty Patches",
 					value: false
 				}
 			},
-			gif: "https://media.giphy.com/media/13CoXDiaCcCoyk/giphy.gif"
+			gif: "assets/images/gwyn.gif"
 		}
 	},
 
 	//Method that starts the timer
 	startTimer: function() {
 		trivia.time = 30;
-		$("#timer").text(trivia.time);
+		$("#timer").text("Time Remaining: " + trivia.time + "s");
 		timer = setInterval(trivia.countDown, 1000)
 	},
 
@@ -250,7 +250,7 @@ var trivia = {
 
 	countDown: function() {
 		trivia.time--;
-		$("#timer").text(trivia.time);
+		$("#timer").text("Time Remaining: " + trivia.time + "s");
 
 		if (trivia.time === 0) {
 			trivia.stopTimer();
@@ -292,7 +292,7 @@ var trivia = {
 		this.correct++;
 		$(".answer").hide();
 		$("#question").html("Correct!");
-		// $("#question").append("<img src='" + this.question.one.gif + "'>");
+		$("#question").append("<br><img src='" + questions[i].gif + "'>");
 		this.nextQuestion();
 		
 	},
@@ -300,17 +300,18 @@ var trivia = {
 	wrongAnswer: function() {
 		this.incorrect++;
 		$(".answer").hide();
-		$("#question").html("Wrong! The correct answer is:");
+		$("#question").html("Wrong! The correct answer is:<br>");
 		$("[value='true']").contents().clone().appendTo($("#question"));
-		// $("#question").append("<img src='" + this.question.one.gif + "'>");
+		$("#question").append("<br><img src='" + questions[i].gif + "'>");
 		this.nextQuestion();
 	},
 
 	timeOver: function() {
 		this.timeOut++;		
 		$(".answer").hide();
-		$("#question").html("Out of time! The correct answer is:");
+		$("#question").html("Out of time! The correct answer is:<br>");
 		$("[value='true']").contents().clone().appendTo($("#question"));
+		$("#question").append("<br><img src='" + questions[i].gif + "'>");
 		this.nextQuestion();
 	},
 
