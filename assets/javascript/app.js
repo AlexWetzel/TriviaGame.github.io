@@ -1,21 +1,15 @@
-for (var j = 0; j < 10; j++) {
-	var number = Math.floor(Math.random() * 4) + 1;
-	console.log(number);
-}
-
 var timer
 
 var trivia = {
 
+	//timer set to 30 seconds
 	time: 30,	
 	correct: 0,
 	incorrect: 0,
-	timeOut: 0,
-	//organize questions and answers in the object
-	//A question string, four answer strings
+
 	question: {
 		one: {
-			string: "What place lies below the world?",
+			string: "What place lies at the deepest reaches of the world?",
 			answer: {
 				one: {
 					string: "Ash Lake",
@@ -252,20 +246,23 @@ var trivia = {
 		trivia.time--;
 		$("#timer").text("Time Remaining: " + trivia.time + "s");
 
+		//When time hits 0, these methods are called
 		if (trivia.time === 0) {
 			trivia.stopTimer();
 			trivia.timeOver();
 		}
 	},
 
+	//Resets the variables when the start button is hit
 	startQuiz: function() {
 		i = 0;
-		this.correct;
-		this.incorrect;
-		this.timeOut;
+		this.correct = 0;
+		this.incorrect = 0;
+		this.timeOut = 0;
 		trivia.questionStart(questions[i]);
 		$("#start").hide();
 	},
+
 	//Method that assigns questions and answers to html elements and writes them to the page
 	questionStart: function(q) {
 		$(".answer").show();
@@ -281,13 +278,9 @@ var trivia = {
 		$("#answerFour").attr("value", q.answer.four.value);
 
 		this.startTimer();
-
-		// console.log($("#answerOne").attr("value"));
-		// console.log($("#answerTwo").attr("value"));
-		// console.log($("#answerThree").attr("value"));
-		// console.log($("#answerFour").attr("value"));
 	},
 
+	//Choosing the correct answer will stop the timer, and replace the question and answers with a correct answer message, and an animated gif
 	rightAnswer: function() {
 		this.correct++;
 		$(".answer").hide();
@@ -297,6 +290,7 @@ var trivia = {
 		
 	},
 
+	//Choosing the wrong answer stops the timer, displays an incorrect answer message with the correct answer, and an animated gif
 	wrongAnswer: function() {
 		this.incorrect++;
 		$(".answer").hide();
@@ -306,6 +300,7 @@ var trivia = {
 		this.nextQuestion();
 	},
 
+	//if the timer hits zero, the game displays a time out message along with the correct answer and an animated gif
 	timeOver: function() {
 		this.timeOut++;		
 		$(".answer").hide();
@@ -314,7 +309,7 @@ var trivia = {
 		$("#question").append("<br><img src='" + questions[i].gif + "'>");
 		this.nextQuestion();
 	},
-
+	//The game displays the next set of question and answers, and continues until there are no questions left.
 	nextQuestion: function() {
 		i++
 		this.stopTimer();
@@ -325,7 +320,7 @@ var trivia = {
 			setTimeout(function(){trivia.endQuiz()}, 5000);
 		}
 	},
-
+	//When the user finishes the quiz, the game will list the number of correct answers, incorrect answers, and time-outs. A button to reset the quiz will appear.
 	endQuiz: function() {
 		$("#start").show()
 		$("#question").text("All done! Here are your results:")
@@ -338,44 +333,27 @@ var trivia = {
 var tQ = trivia.question;
 var questions = [tQ.one, tQ.two, tQ.three, tQ.four, tQ.five, tQ.six, tQ.seven, tQ.eight, tQ.nine, tQ.ten]
 
-
-// console.log(trivia.question.one.string);
-// console.log(trivia.question.one.answer.one.string + " is " + trivia.question.one.answer.one.value);
-// console.log(trivia.question.one.answer.two.string + " is " + trivia.question.one.answer.two.value);
-// console.log(trivia.question.one.answer.three.string + " is " + trivia.question.one.answer.three.value);
-// console.log(trivia.question.one.answer.four.string + " is " + trivia.question.one.answer.four.value);
-
 //When the page loads there will be only the header, and a start button. The header is one of the only static elements on the page
-
-//Hitting the start button will begin the quiz. The page now displays a 30 second timer, the first question, and four answer choices.
 
 $(".answer").hide();
 
 $("#start").click(function() {
+	//Hitting the start button will begin the quiz. The page now displays a 30 second timer, the first question, and four answer choices.
 	trivia.startQuiz();
 });
 
-//Choosing the correct answer will stop the timer, and replace the question and answers with a correct answer message, and an animated gif
-$(".answer").click(function() {
-	// alert("click");
-	console.log(this);
-	console.log($(this).attr("value"));
 
+$(".answer").click(function() {
+	
 	var check = $(this).attr("value");
 	
 	if (check === "true") {
-		// console.log("correct");
+		
 		trivia.rightAnswer();
 	}
+
 	if (check === "false") {
-		// console.log("nope");
+		
 		trivia.wrongAnswer();
 	}
 });
-//Choosing the wrong answer stops the timer, displays an incorrect answer message with the correct answer, and an animated gif
-
-//if the timer hits zero, the game displays a time out message along with the correct answer and an animated gif
-
-//The game displays the next set of question and answers, and continues until there are no questions left.
-
-//When the user finishes the quiz, the game will list the number of correct answers, incorrect answers, and time-outs. A button to reset the quiz will appear.
