@@ -2,6 +2,10 @@ body {
 	background-color: #101010;
 }
 
+h1 {
+	color: white;
+}
+
 .jumbotron{
 	overflow: auto;
 }
